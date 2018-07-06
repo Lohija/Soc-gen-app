@@ -1,0 +1,13 @@
+<p>
+ Data : {{data | async}}
+</p>
+<div>
+    <input type="text" [(ngModel)]="filteredstatus">
+    <button (click)="AddTodo()">Add</button>
+    <ul>
+        <li *ngFor="let todo of todos | filter : filteredstatus : 'status'">
+            {{todo.label}}
+            <span class="badge">{{todo.status}}</span>
+        </li>
+    </ul>
+</div>

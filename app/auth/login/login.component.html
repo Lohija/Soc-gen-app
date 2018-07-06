@@ -1,0 +1,15 @@
+
+<!-- Template driven form -->
+<form (ngSubmit)="login(f)" #f="ngForm">
+
+  <div class="form-group">
+    <label for="username" > UserName : </label>
+    <input type="text" name="username" ngModel required minlength="5">
+  </div>
+  <div class="form-group">
+      <label for="password" > Password : </label>
+      <input type="password" name="password"  ngModel required>
+    </div>
+    <button type="submit"  [disabled]="!f.valid">Login</button>
+    <p>{{f.valid}}</p>
+</form>

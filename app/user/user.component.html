@@ -1,0 +1,42 @@
+<ng-content></ng-content>
+
+<h2>
+    Component loaded sucessfully!!
+</h2>
+<ul>
+        <!-- <div>{{userService.counter}}</div>
+        <button (click)="Increase()">Increase</button> -->
+<li *ngFor = "let user of users; index as i;first as isFirst;last as isLast;even as isEven;odd as IsOdd">
+        <!-- class="col-xs-2 col-sm-2 col-md-2" -->
+<div>
+    <img [src]="user.image" alt="">
+    <button (click)="moreInfo(user)"> More info</button>
+</div>
+ <div> {{i}}  </div>
+ <!-- <div>{{userService.counter}}</div> -->
+<!-- class="col-xs-8 col-sm-8 col-md-8" -->
+<div >
+
+    <p appHighLight [mycolor]="mycolor"> {{user.firstName | uppercase}} {{user.lastName | uppercase}} </p>
+    <p *appUnless="user.income < 0">
+         {{user.income}}
+    </p>
+    <p *ngIf="user.income > 0 else elseTemplate">Income : {{user.income | currency : 'INR'}}</p>
+  <!-- property binding  -->
+    <p [ngClass]="{'myBorder' : isFirst}"> DOB <span [innerHTML]="user.dob" ></span>  </p>  
+    <p [ngClass]="myBorderStyle"> DOB <span [innerHTML]="user.dob | date : 'MM/dd/yyyy'" ></span>  </p>  
+    <p>{{user.phone | countrycode : '95' }} </p>
+</div>
+<ng-template #elseTemplate>
+    {{user.firstName}} is not working
+</ng-template>
+<!-- class="col-xs-2 col-sm-2 col-md-2" -->
+<div >
+    Votes : {{user.vote}}
+    <input type="number" [value]="user.vote" (change)="user.vote=$event.target.value">
+    <input type="number" [(ngModel)]="user.vote">
+</div>
+</li>
+<br>
+
+</ul>
